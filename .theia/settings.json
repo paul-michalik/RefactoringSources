@@ -1,0 +1,10 @@
+{
+   "editor.codeLens": false,
+   "navigator.autoReveal": true,
+   "cpp.buildConfigurations": [
+       {
+           "name":"Debug",
+           "directory":"products/x64-Linux/Debug"
+       }
+   ]
+}
