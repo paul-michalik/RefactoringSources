@@ -26,13 +26,13 @@ public:
       for (int j = i + 1; j < _p.size(); j++) {
         AgeDifference r;
         if (_p[i].birthDate_ < _p[j].birthDate_) {
-          r.P1 = _p[i];
-          r.P2 = _p[j];
+          r.Younger = _p[i];
+          r.Older = _p[j];
         } else {
-          r.P1 = _p[j];
-          r.P2 = _p[i];
+          r.Younger = _p[j];
+          r.Older = _p[i];
         }
-        r.Value = r.P2.birthDate_.getTime() - r.P1.birthDate_.getTime();
+        r.Value = r.Older.birthDate_.getTime() - r.Younger.birthDate_.getTime();
         tr.push_back(r);
       }
     }

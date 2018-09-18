@@ -8,8 +8,8 @@ namespace algorithm {
 
 class AgeDifference {
 public:
-  Person P1;
-  Person P2;
+  Person Younger;
+  Person Older;
   long Value;
 };
 }
