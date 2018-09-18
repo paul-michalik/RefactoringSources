@@ -1,5 +1,5 @@
-#ifndef FILTER_THING_H
-#define FILTER_THING_H
+#ifndef FILTER_PERSON_H
+#define FILTER_PERSON_H
 
 #include <string>
 
@@ -52,17 +52,17 @@ public:
   }
 };
 
-class Thing {
+class Person {
 public:
-  Thing() : birthDate_(70, 1, 1){};
+  Person() : birthDate_(70, 1, 1){};
   std::string name_;
   Date birthDate_;
 
-  friend bool operator==(const Thing &lhs, const Thing &rhs) {
+  friend bool operator==(const Person &lhs, const Person &rhs) {
     return lhs.name_ == rhs.name_ && lhs.birthDate_ == rhs.birthDate_;
   }
 
-  friend bool operator!=(const Thing &lhs, const Thing &rhs) {
+  friend bool operator!=(const Person &lhs, const Person &rhs) {
     return !(rhs == lhs);
   }
 
@@ -75,4 +75,4 @@ public:
   void setBirthDate(Date birthDate) { birthDate_ = birthDate; }
 };
 }
-#endif // FILTER_THING_H
+#endif // FILTER_Person_H

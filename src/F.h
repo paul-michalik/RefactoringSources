@@ -2,14 +2,14 @@
 #ifndef FILTER_F_H
 #define FILTER_F_H
 
-#include "Thing.h"
+#include "Person.h"
 
 namespace algorithm {
 
 class F {
 public:
-  Thing P1;
-  Thing P2;
+  Person P1;
+  Person P2;
   long D;
 };
 }

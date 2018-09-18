@@ -5,16 +5,16 @@
 
 #include "F.h"
 #include "FT.h"
-#include "Thing.h"
+#include "Person.h"
 
 namespace algorithm {
 
 class Finder {
 private:
-  std::vector<Thing> _p;
+  std::vector<Person> _p;
 
 public:
-  Finder(std::vector<Thing> p) { _p = p; }
+  Finder(std::vector<Person> p) { _p = p; }
 
   F Find(FT ft) {
     std::vector<F> tr;

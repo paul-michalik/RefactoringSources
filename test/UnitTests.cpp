@@ -2,17 +2,17 @@
 #include <gtest/gtest.h>
 
 #include "Finder.h"
-#include "Thing.h"
+#include "Person.h"
 
 using namespace algorithm;
 using std::vector;
 
 class TestFixture : public testing::Test {
 protected:
-  Thing sue;
-  Thing greg;
-  Thing sarah;
-  Thing mike;
+  Person sue;
+  Person greg;
+  Person sarah;
+  Person mike;
 
 public:
   TestFixture() {
@@ -28,7 +28,7 @@ public:
 };
 
 TEST_F(TestFixture, Returns_Empty_Results_When_Given_Empty_List) {
-  vector<Thing> list;
+  vector<Person> list;
   Finder finder{list};
 
   F result = finder.Find(FT::One);
@@ -37,7 +37,7 @@ TEST_F(TestFixture, Returns_Empty_Results_When_Given_Empty_List) {
 }
 
 TEST_F(TestFixture, Returns_Empty_Results_When_Given_One_Person) {
-  vector<Thing> list;
+  vector<Person> list;
   list.push_back(sue);
 
   Finder finder(list);
@@ -49,7 +49,7 @@ TEST_F(TestFixture, Returns_Empty_Results_When_Given_One_Person) {
 }
 
 TEST_F(TestFixture, Returns_Closest_Two_For_Two_People) {
-  vector<Thing> list;
+  vector<Person> list;
   list.push_back(sue);
   list.push_back(greg);
   Finder finder(list);
@@ -60,7 +60,7 @@ TEST_F(TestFixture, Returns_Closest_Two_For_Two_People) {
 }
 
 TEST_F(TestFixture, Returns_Furthest_Two_For_Two_People) {
-  vector<Thing> list;
+  vector<Person> list;
   list.push_back(mike);
   list.push_back(greg);
   Finder finder(list);
@@ -71,7 +71,7 @@ TEST_F(TestFixture, Returns_Furthest_Two_For_Two_People) {
 }
 
 TEST_F(TestFixture, Returns_Furthest_Two_For_Four_People) {
-  vector<Thing> list;
+  vector<Person> list;
   list.push_back(sue);
   list.push_back(sarah);
   list.push_back(mike);
