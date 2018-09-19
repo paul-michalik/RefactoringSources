@@ -3,30 +3,29 @@
 
 #include "Date.h"
 #include <string>
+#include <utility>
 
-namespace algorithm {
+namespace algorithm
+{
 
-class Person {
-public:
-  Person() : birthDate_(70, 1, 1){};
-  std::string name_;
-  Date birthDate_;
+class Person
+{
+    std::string name_;
+    Date birthDate_{70, 1, 1};
 
-  friend bool operator==(const Person &lhs, const Person &rhs) {
-    return lhs.name_ == rhs.name_ && lhs.birthDate_ == rhs.birthDate_;
-  }
+  public:
+    Person() = default;
+    Person(std::string name, Date birthDate) : name_{std::move(name)}, birthDate_{std::move(birthDate)} {}
+    friend bool operator==(const Person& lhs, const Person& rhs)
+    {
+        return lhs.name_ == rhs.name_ && lhs.birthDate_ == rhs.birthDate_;
+    }
 
-  friend bool operator!=(const Person &lhs, const Person &rhs) {
-    return !(rhs == lhs);
-  }
+    friend bool operator!=(const Person& lhs, const Person& rhs) { return !(rhs == lhs); }
 
-  std::string getName() { return name_; }
+    std::string const& getName() const { return name_; }
 
-  void setName(const std::string &name) { name_ = name; }
-
-  Date getBirthDate() { return birthDate_; }
-
-  void setBirthDate(Date birthDate) { birthDate_ = birthDate; }
+    Date const& getBirthDate() const { return birthDate_; }
 };
-}
-#endif // FILTER_PERSON_H
+}  // namespace algorithm
+#endif  // FILTER_PERSON_H

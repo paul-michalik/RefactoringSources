@@ -15,7 +15,7 @@ namespace algorithm {
         Date(int year_, int month_, int day_)
             : year_(year_), month_(month_), day_(day_) {}
 
-        long getTime() {
+        long getTime() const {
             std::tm tm{0, 0, 0, day_, month_, year_ - 1900};
             return std::mktime(&tm);
         }

@@ -16,7 +16,7 @@ class Pair
     Pair() = default;
     Pair(Person p, Person q)
     {
-        if (p.birthDate_ < q.birthDate_)
+        if (p.getBirthDate() < q.getBirthDate())
         {
             younger_ = p;
             older_ = q;
