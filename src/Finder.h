@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "AgeDifference.h"
+#include "Pair.h"
 #include "FT.h"
 #include "Person.h"
 
@@ -16,15 +16,15 @@ private:
 public:
   Finder(std::vector<Person> p) { _p = p; }
 
-  AgeDifference Find(FT ft) {
-    std::vector<AgeDifference> tr;
+  Pair Find(FT ft) {
+    std::vector<Pair> tr;
 
     if (_p.size() == 0)
-      return AgeDifference{};
+      return Pair{};
 
     for (int i = 0; i < _p.size() - 1; i++) {
       for (int j = i + 1; j < _p.size(); j++) {
-        AgeDifference r;
+        Pair r;
         if (_p[i].birthDate_ < _p[j].birthDate_) {
           r.Younger = _p[i];
           r.Older = _p[j];
@@ -32,26 +32,26 @@ public:
           r.Younger = _p[j];
           r.Older = _p[i];
         }
-        r.Value = r.Older.birthDate_.getTime() - r.Younger.birthDate_.getTime();
+        r.AgeDifference = r.Older.birthDate_.getTime() - r.Younger.birthDate_.getTime();
         tr.push_back(r);
       }
     }
 
     if (tr.size() < 1) {
-      return AgeDifference{};
+      return Pair{};
     }
 
     auto answer = tr[0];
     for (auto const& result : tr) {
       switch (ft) {
       case FT::One:
-        if (result.Value < answer.Value) {
+        if (result.AgeDifference < answer.AgeDifference) {
           answer = result;
         }
         break;
 
       case FT::Two:
-        if (result.Value > answer.Value) {
+        if (result.AgeDifference > answer.AgeDifference) {
           answer = result;
         }
         break;

@@ -31,7 +31,7 @@ TEST_F(TestFixture, Returns_Empty_Results_When_Given_Empty_List) {
   vector<Person> list;
   Finder finder{list};
 
-  AgeDifference result = finder.Find(FT::One);
+  Pair result = finder.Find(FT::One);
   ASSERT_TRUE(result.Younger.name_.empty());
   ASSERT_TRUE(result.Older.name_.empty());
 }
@@ -42,7 +42,7 @@ TEST_F(TestFixture, Returns_Empty_Results_When_Given_One_Person) {
 
   Finder finder(list);
 
-  AgeDifference result = finder.Find(FT::One);
+  Pair result = finder.Find(FT::One);
 
   ASSERT_TRUE(result.Younger.name_.empty());
   ASSERT_TRUE(result.Older.name_.empty());
@@ -54,7 +54,7 @@ TEST_F(TestFixture, Returns_Closest_Two_For_Two_People) {
   list.push_back(greg);
   Finder finder(list);
 
-  AgeDifference result = finder.Find(FT::One);
+  Pair result = finder.Find(FT::One);
   ASSERT_EQ(sue, result.Younger);
   ASSERT_EQ(greg, result.Older);
 }
@@ -65,7 +65,7 @@ TEST_F(TestFixture, Returns_Furthest_Two_For_Two_People) {
   list.push_back(greg);
   Finder finder(list);
 
-  AgeDifference result = finder.Find(FT::Two);
+  Pair result = finder.Find(FT::Two);
   ASSERT_EQ(greg, result.Younger);
   ASSERT_EQ(mike, result.Older);
 }
@@ -78,7 +78,7 @@ TEST_F(TestFixture, Returns_Furthest_Two_For_Four_People) {
   list.push_back(greg);
   Finder finder(list);
 
-  AgeDifference result = finder.Find(FT::Two);
+  Pair result = finder.Find(FT::Two);
   ASSERT_EQ(sue, result.Younger);
   ASSERT_EQ(sarah, result.Older);
 }
