@@ -4,10 +4,15 @@
 #include <vector>
 
 #include "Pair.h"
-#include "Kind.h"
 #include "Person.h"
 
 namespace algorithm {
+
+enum class DifferenceType
+{
+    Minimal,
+    Maximal
+};
 
 class Finder {
 private:
@@ -16,7 +21,8 @@ private:
 public:
   Finder(std::vector<Person> p) { _p = p; }
 
-  Pair Find(AgeDifferenceKind ft) {
+  Pair Find(DifferenceType diffType)
+  {
     std::vector<Pair> tr;
 
     if (_p.size() == 0)
@@ -35,14 +41,14 @@ public:
 
     auto answer = tr[0];
     for (auto const& result : tr) {
-      switch (ft) {
-      case AgeDifferenceKind::Min:
+      switch (diffType) {
+      case DifferenceType::Minimal:
         if (result.AgeDifference() < answer.AgeDifference()) {
           answer = result;
         }
         break;
 
-      case AgeDifferenceKind::Max:
+      case DifferenceType::Maximal:
         if (result.AgeDifference() > answer.AgeDifference()) {
           answer = result;
         }

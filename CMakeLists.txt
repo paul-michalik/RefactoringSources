@@ -36,7 +36,7 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES src/Pair.h src/Kind.h src/Person.h src/Finder.h)
+set(SOURCE_FILES src/Pair.h src/Person.h src/Finder.h)
 
 set(UNIT_TESTS_SOURCE_FILES
         ${SOURCE_FILES}
