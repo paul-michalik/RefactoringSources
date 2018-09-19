@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "Pair.h"
-#include "FT.h"
+#include "Kind.h"
 #include "Person.h"
 
 namespace algorithm {
@@ -16,7 +16,7 @@ private:
 public:
   Finder(std::vector<Person> p) { _p = p; }
 
-  Pair Find(FT ft) {
+  Pair Find(AgeDifferenceKind ft) {
     std::vector<Pair> tr;
 
     if (_p.size() == 0)
@@ -44,13 +44,13 @@ public:
     auto answer = tr[0];
     for (auto const& result : tr) {
       switch (ft) {
-      case FT::One:
+      case AgeDifferenceKind::Min:
         if (result.AgeDifference < answer.AgeDifference) {
           answer = result;
         }
         break;
 
-      case FT::Two:
+      case AgeDifferenceKind::Max:
         if (result.AgeDifference > answer.AgeDifference) {
           answer = result;
         }
