@@ -32,8 +32,8 @@ TEST_F(TestFixture, Returns_Empty_Results_When_Given_Empty_List) {
   Finder finder{list};
 
   Pair result = finder.Find(AgeDifferenceKind::Min);
-  ASSERT_TRUE(result.Younger.name_.empty());
-  ASSERT_TRUE(result.Older.name_.empty());
+  ASSERT_TRUE(result.Younger().name_.empty());
+  ASSERT_TRUE(result.Older().name_.empty());
 }
 
 TEST_F(TestFixture, Returns_Empty_Results_When_Given_One_Person) {
@@ -44,8 +44,8 @@ TEST_F(TestFixture, Returns_Empty_Results_When_Given_One_Person) {
 
   Pair result = finder.Find(AgeDifferenceKind::Min);
 
-  ASSERT_TRUE(result.Younger.name_.empty());
-  ASSERT_TRUE(result.Older.name_.empty());
+  ASSERT_TRUE(result.Younger().name_.empty());
+  ASSERT_TRUE(result.Older().name_.empty());
 }
 
 TEST_F(TestFixture, Returns_Closest_Two_For_Two_People) {
@@ -55,8 +55,8 @@ TEST_F(TestFixture, Returns_Closest_Two_For_Two_People) {
   Finder finder(list);
 
   Pair result = finder.Find(AgeDifferenceKind::Min);
-  ASSERT_EQ(sue, result.Younger);
-  ASSERT_EQ(greg, result.Older);
+  ASSERT_EQ(sue, result.Younger());
+  ASSERT_EQ(greg, result.Older());
 }
 
 TEST_F(TestFixture, Returns_Furthest_Two_For_Two_People) {
@@ -66,8 +66,8 @@ TEST_F(TestFixture, Returns_Furthest_Two_For_Two_People) {
   Finder finder(list);
 
   Pair result = finder.Find(AgeDifferenceKind::Max);
-  ASSERT_EQ(greg, result.Younger);
-  ASSERT_EQ(mike, result.Older);
+  ASSERT_EQ(greg, result.Younger());
+  ASSERT_EQ(mike, result.Older());
 }
 
 TEST_F(TestFixture, Returns_Furthest_Two_For_Four_People) {
@@ -79,6 +79,6 @@ TEST_F(TestFixture, Returns_Furthest_Two_For_Four_People) {
   Finder finder(list);
 
   Pair result = finder.Find(AgeDifferenceKind::Max);
-  ASSERT_EQ(sue, result.Younger);
-  ASSERT_EQ(sarah, result.Older);
+  ASSERT_EQ(sue, result.Younger());
+  ASSERT_EQ(sarah, result.Older());
 }

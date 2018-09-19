@@ -4,13 +4,36 @@
 
 #include "Person.h"
 
-namespace algorithm {
+namespace algorithm
+{
 
-class Pair {
-public:
-  Person Younger;
-  Person Older;
-  long AgeDifference;
+class Pair
+{
+    Person younger_, older_;
+    long age_difference_;
+
+  public:
+    Pair() = default;
+    Pair(Person p, Person q)
+    {
+        if (p.birthDate_ < q.birthDate_)
+        {
+            younger_ = p;
+            older_ = q;
+        }
+        else
+        {
+            younger_ = q;
+            older_ = p;
+        }
+        age_difference_ = older_.getBirthDate().getTime() - younger_.getBirthDate().getTime();
+    }
+
+    Person const& Younger() const { return younger_; }
+
+    Person const& Older() const { return older_; }
+
+    long AgeDifference() const { return age_difference_; }
 };
-}
-#endif // FILTER_PAIR_H
+}  // namespace algorithm
+#endif  // FILTER_PAIR_H

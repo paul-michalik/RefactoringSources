@@ -24,15 +24,7 @@ public:
 
     for (int i = 0; i < _p.size() - 1; i++) {
       for (int j = i + 1; j < _p.size(); j++) {
-        Pair r;
-        if (_p[i].birthDate_ < _p[j].birthDate_) {
-          r.Younger = _p[i];
-          r.Older = _p[j];
-        } else {
-          r.Younger = _p[j];
-          r.Older = _p[i];
-        }
-        r.AgeDifference = r.Older.birthDate_.getTime() - r.Younger.birthDate_.getTime();
+        Pair r{_p[i], _p[j]};
         tr.push_back(r);
       }
     }
@@ -45,13 +37,13 @@ public:
     for (auto const& result : tr) {
       switch (ft) {
       case AgeDifferenceKind::Min:
-        if (result.AgeDifference < answer.AgeDifference) {
+        if (result.AgeDifference() < answer.AgeDifference()) {
           answer = result;
         }
         break;
 
       case AgeDifferenceKind::Max:
-        if (result.AgeDifference > answer.AgeDifference) {
+        if (result.AgeDifference() > answer.AgeDifference()) {
           answer = result;
         }
         break;
