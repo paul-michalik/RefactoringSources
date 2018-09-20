@@ -2,4 +2,7 @@
 /cmake-build-debug
 /googletest
 /products
-/.vs
+/.vs/RefactoringSources/v15
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite
+/.vs/ProjectSettings.json
