@@ -19,7 +19,9 @@ private:
   std::vector<Person> _p;
 
 public:
-  Finder(std::vector<Person> p) { _p = p; }
+  Finder(std::vector<Person> p) : _p{std::move(p)} 
+  {
+  }
 
   Pair Find(DifferenceType diffType)
   {
